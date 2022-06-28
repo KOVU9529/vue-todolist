@@ -32,20 +32,39 @@ var app = new Vue (
                     done:true
                 },
                 {
-                    text:'Fare i compiti',
+                    text:'Fare la spesa',
                     done:true
                 },
                 {
-                    text:'Fare i compiti',
+                    text:'Fare il bucato',
                     done:true
                 }
             ],
         },
         //All'interno di methods genero la funzione per aggiungere il nuovo elemento all'array
         methods:{
-            addNewToDo(){
-
-            }
+             // Genero la funzione per aggiungere il nuovo elemento
+             addNewTodo() {
+                if(this.newTodoText.length > 0) 
+                {
+                    //creo il mio oggetto
+                    const newOb =
+                    {
+                        //Il valore della proprietà text diventa uguale a this.newTodoText 
+                        text:this.newTodoText ,
+                        //imposto inizialmente falsa (azione nella lista non ancora eseguita)
+                        done:false
+                    };
+                    console.log(newOb);
+                    // Pushare nell'array il nuovo oggetto creato
+                    this.todos.push(newOb);
+                }
+                this.newTodoText = '';
+            },
+            //Rimuove con splice
+            removeTodo(index) {
+                this.todos.splice(index, 1);
+            },
         }
     }
 )

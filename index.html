@@ -12,14 +12,43 @@
 <body>
     <!--Punto di riferimento per vue-->
     <div id="root">
+        <!--MILESTONE 3
+        Predisporre un campo di input testuale e un pulsante "aggiungi": 
+        cliccando sul pulsante, il testo digitato viene letto e utilizzato per creare un nuovo todo, 
+        che quindi viene aggiunto alla lista dei todo esistenti.-->
            <!--Creo l'input per inserire nuovi elementi nella lista-->
         <div class="inputs">
                <!--Nella input è presente il riferimento per il nuovo elemento
-                   il comando per inserire avviene tramite button o tramite invio-->
-            <input v-model="newTodoText" @keyup.enter="addNewTodo()" type="text" placeholder="Nuovo todo">
+                   il comando per inserire avviene tramite button -->
+            <input v-model="newTodoText" type="text" placeholder="Nuovo todo">
             <button @click="addNewTodo()">Aggiungi</button>
         </div>
-
+    <!--Creo il container per la lista-->
+        <div class="todos-container">
+    <!--Creo la lista-->
+    <!--Imposto la condizione di aggiunta alla lista-->
+            <ul v-if="todos.length > 0" class="todos-list">
+    <!--Creo il template-->
+    <!--MILESTONE 1
+     Stampare all'interno di una lista, un item per ogni todo.
+     Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.-->
+               <li v-for="element,index in todos" class="todo">
+     <!--Nello span stampero in html-->
+     <!--Imposto la classe se un'azione è stata gia svolta-->
+                   <span :class="{'sbarrList' : element.done}">{{ element.text }}</span> 
+                   <!--MILESTONE 2
+                    Visualizzare a fianco ad ogni item ha una "x": cliccando su di essa, 
+                    il todo viene rimosso dalla lista.-->
+                   <!--Imposto un div che contenga la x per rimuovere gli elementi-->
+                   <div class="action">
+                    <!--Imposto l'azione del click per rimuovere un oggetto dalla lista-->
+                     <span @click="removeTodo(index)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                     </span>
+                   </div>
+               </li>
+            </ul>
+        </div>
     </div>
     <script type="text/javascript" src="js/script.js"></script>
 </body>
