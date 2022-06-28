@@ -38,6 +38,7 @@
                <li v-for="element,index in todos" class="todo">
      <!--Nello span stampero in html-->
      <!--Imposto la classe se un'azione è stata gia svolta-->
+     <!--Imposto l'azione al click per cambiare il valore del done-->
                    <span @click="toggle(index)":class="{'sbarrList' : element.done}">{{ element.text }}</span> 
                    <!--MILESTONE 2
                     Visualizzare a fianco ad ogni item ha una "x": cliccando su di essa, 
